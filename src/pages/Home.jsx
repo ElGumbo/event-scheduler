@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import EventList from "../components/events/EventList";
 
 export default function Home() {
-  const [eventApiData, setEventApiData] = useState([]);
+  const [eventApiData, setEventApiData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +13,7 @@ export default function Home() {
     fetchData();
   }, []);
 
-  if (!eventApiData.length) return <p>Loading...</p>;
+  if (!eventApiData) return <p>Loading...</p>;
 
   console.log(eventApiData);
   return (
