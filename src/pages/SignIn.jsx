@@ -25,7 +25,8 @@ export default function SignIn({ onLogin }) {
 
       const data = await response.json();
 
-      if (response.status === 403) throw new Error("E-Mail oder Passwort falsch");
+      if (response.status === 403)
+        throw new Error("E-Mail oder Passwort falsch");
       if (response.status === 400) throw new Error(data.error);
       if (!response.ok) throw new Error("Login fehlgeschlagen");
 
@@ -41,35 +42,43 @@ export default function SignIn({ onLogin }) {
   };
 
   return (
-    <div className="card bg-base-100 w-full max-w-sm m-auto shadow-sm">
-      <div className="card-body">
-        <h2 className="card-title">Anmelden</h2>
+    <div className='card bg-base-100 w-full max-w-sm m-auto shadow-sm'>
+      <div className='card-body'>
+        <h2 className='card-title'>Anmelden</h2>
 
-        {error && <div className="alert alert-error">{error}</div>}
+        {error && <div className='alert alert-error'>{error}</div>}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
           <input
-            type="email"
-            name="email"
-            placeholder="E-Mail"
-            className="input input-bordered w-full"
+            type='email'
+            name='email'
+            placeholder='E-Mail'
+            className='input input-bordered w-full'
             value={formData.email}
             onChange={handleChange}
             required
           />
           <input
-            type="password"
-            name="password"
-            placeholder="Passwort"
-            className="input input-bordered w-full"
+            type='password'
+            name='password'
+            placeholder='Passwort'
+            className='input input-bordered w-full'
             value={formData.password}
             onChange={handleChange}
             minLength={8}
             required
           />
 
-          <button type="submit" className="btn btn-primary w-full" disabled={loading}>
-            {loading ? <span className="loading loading-spinner" /> : "Anmelden"}
+          <button
+            type='submit'
+            className='btn btn-primary w-full'
+            disabled={loading}
+          >
+            {loading ? (
+              <span className='loading loading-spinner' />
+            ) : (
+              "Anmelden"
+            )}
           </button>
         </form>
       </div>

@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className='p-4 bg-gray-800 text-white'>
       <div className='container mx-auto flex justify-between items-center'>
         <Link to='/' className='hover:underline'>
-          <span className='text-xl font-bold'>MyApp</span>
+          <span className='text-xl font-bold'>Event Scheduler</span>
         </Link>
         <div className='space-x-4'>
           <Link to='/' className='hover:underline'>
