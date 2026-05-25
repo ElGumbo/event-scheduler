@@ -24,7 +24,6 @@ export default function SignIn({ onLogin }) {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (response.status === 403) throw new Error("E-Mail oder Passwort falsch");
       if (response.status === 400) throw new Error(data.error);

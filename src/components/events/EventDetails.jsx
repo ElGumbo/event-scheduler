@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { apiFetch } from "../../utils/api";
 
 export default function EventDetails() {
   const [eventData, setEventData] = useState(null);
@@ -7,7 +8,7 @@ export default function EventDetails() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:3001/api/events/${slug}`);
+      const response = await apiFetch(`/api/events/${slug}`);
       const data = await response.json();
       setEventData(data);
     };

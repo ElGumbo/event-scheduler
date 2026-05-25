@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { getToken } from "../utils/auth";
+import { apiFetch } from "../utils/api";
 
 export default function CreateEvent() {
   const [formData, setFormData] = useState({
@@ -25,14 +26,8 @@ export default function CreateEvent() {
     setError(null);
 
     try {
-      const token = getToken();
-
-      const response = await fetch("http://localhost:3001/api/events", {
+      const response = await apiFetch("/api/events", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
         body: JSON.stringify({
           ...formData,
           date: new Date(formData.date).toISOString(),
